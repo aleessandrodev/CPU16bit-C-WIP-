@@ -1,0 +1,23 @@
+#include <cstdint>
+#include "register.h"
+
+special_registers sr;
+
+uint16_t registers[16] = {
+    0x0000,
+    0x0000,
+    0x0000,
+    0x0005,
+    0x0000,
+    0x0000,
+    0x0000,
+    0x0000,
+    0x0000,
+    0x0000,
+    0x0005,
+    0x0005,
+    0x0000,
+    0x0000,
+    0x0000,
+    0x0000,
+};
