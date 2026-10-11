@@ -26,7 +26,7 @@ int main(){
         
     }
 
-    std::cout << sr.AR;
+    //std::cout << sr.AR;
 
     return 0;
     

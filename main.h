@@ -11,12 +11,10 @@ class RAM{
     public:
         RAM(size_t size = 65536){
             memory.resize(size, 0x0000);
-            memory[0] = 0x4501;
-            memory[1] = 0x460A;
-            memory[2] = 0xE115;
-            memory[3] = 0xF016;
-            memory[4] = 0x51FD;
-            memory[5] = 0x1000;
+            memory[0] = 0x48FF;
+            memory[1] = 0x6188;
+            memory[2] = 0x7188;
+            memory[3] = 0x1000;
             
             
             

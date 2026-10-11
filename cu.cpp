@@ -2,6 +2,7 @@
 #include "alu.h"
 #include "cpu.h"
 #include "main.h"
+#include "screen.h"
 #include "register.h"
 
 
@@ -47,13 +48,30 @@ void execute(uint16_t OPcode){
         case 0x6:
             //MEMORY LOAD
             
+            /*sr.MAR = ((uint32_t)registers[sourceA] << 16) | registers[sourceB];
+            sr.MDR = ram.read(sr.MAR);
+            registers[destination] = sr.MDR;*/
+            
+            
             sr.MAR = ((uint32_t)registers[sourceA] << 16) | registers[sourceB];
-            sr.MDR = registers[sr.MAR];
+            if(sr.MAR == 0xFFFFFFFF) sr.MDR = scr.read();
+            else sr.MDR = ram.read(sr.MAR);
             registers[destination] = sr.MDR;
+            
+            
+            //scr.read(sr.MDR);
         
             break;
         case 0x7:
             //MEMORY STORE
+        
+            sr.MDR = registers[destination];
+            sr.MAR = ((uint32_t)registers[sourceA] << 16) | registers[sourceB];
+            if(sr.MAR == 0xFFFFFFFF) scr.write(sr.MDR);
+            else ram.write(sr.MAR, sr.MDR);
+            
+            //scr.write(registers[sr.MAR]);
+            
         
             break;
         case 0x8:
